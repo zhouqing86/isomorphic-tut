@@ -86,7 +86,8 @@ module.exports = {
   add: add,
   substract: substract,
   randomInt: randomInt,
-  apiRequest: function(max) {
+  apiRequest: function(apiHost, max) {
+    console.log('apiHost: ' + apiHost);
     const a = randomInt(max);
     const b = randomInt(max);
     return {a: a, b: b, result: a+b};
@@ -105,10 +106,11 @@ var math = __webpack_require__(0);
 
 var button = document.getElementById('randomButton');
 var result = document.getElementById('result');
+var apiHost = REA.config.apiHost;
 
 
 button.addEventListener('click', function(){
-  result.innerHTML = math.render(math.apiRequest(1000));
+  result.innerHTML = math.render(math.apiRequest(apiHost, 1000));
 });
 
 
